@@ -9,7 +9,9 @@ Soak test your API. One request every few seconds, for hours. Logs every failure
 [![Node.js](https://img.shields.io/badge/node-%3E%3D20-brightgreen)](https://nodejs.org)
 [![Bun](https://img.shields.io/badge/bun-%3E%3D1.0-black)](https://bun.sh)
 
-**dripfeed** hits your API endpoints at regular intervals (every 1 to 30 seconds) and logs every response to a local SQLite database. Run it for hours or days to catch intermittent failures, latency degradation, and silent outages that load tests and uptime pings miss. This is soak testing: sustained, low-volume traffic over long periods to surface problems that only appear under real-world conditions.
+**dripfeed** sends HTTP requests to your endpoints at regular intervals (every 1 to 30 seconds) and logs every response to a local SQLite database. Run it for hours or days to catch intermittent failures, latency degradation, memory leaks, resource exhaustion, and silent outages that load tests and uptime pings miss.
+
+This is **soak testing** (also called endurance testing): sustained, low-volume traffic over extended periods to evaluate stability and reliability. It surfaces problems that only appear under real-world conditions, like performance degradation over time, connection pool exhaustion, and errors that happen once every thousand requests.
 
 ## When to use dripfeed
 

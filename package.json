@@ -62,7 +62,14 @@
 		"latency-monitor",
 		"cli",
 		"devops",
-		"ci-cd"
+		"ci-cd",
+		"performance-testing",
+		"endurance-testing",
+		"stability-testing",
+		"memory-leak-detection",
+		"resource-exhaustion",
+		"latency-degradation",
+		"http-client"
 	],
 	"scripts": {
 		"build": "tsdown",
