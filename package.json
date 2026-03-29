@@ -1,0 +1,98 @@
+{
+	"name": "dripfeed",
+	"version": "0.1.0",
+	"type": "module",
+	"description": "Soak test CLI for APIs. Hits endpoints at intervals for hours, logs results to SQLite, fails CI on threshold breaches.",
+	"bin": {
+		"dripfeed": "./dist/cli.mjs"
+	},
+	"main": "./dist/index.cjs",
+	"module": "./dist/index.mjs",
+	"types": "./dist/index.d.ts",
+	"exports": {
+		".": {
+			"import": {
+				"types": "./dist/index.d.mts",
+				"default": "./dist/index.mjs"
+			},
+			"require": {
+				"types": "./dist/index.d.cts",
+				"default": "./dist/index.cjs"
+			}
+		},
+		"./package.json": "./package.json"
+	},
+	"files": [
+		"dist"
+	],
+	"engines": {
+		"node": ">=20"
+	},
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/ph33nx/dripfeed.git"
+	},
+	"homepage": "https://github.com/ph33nx/dripfeed#readme",
+	"bugs": {
+		"url": "https://github.com/ph33nx/dripfeed/issues"
+	},
+	"keywords": [
+		"soak-test",
+		"soak-testing",
+		"api-testing",
+		"api-monitor",
+		"api-monitoring",
+		"api-uptime",
+		"uptime",
+		"uptime-monitor",
+		"synthetic-monitoring",
+		"synthetic-monitor",
+		"endpoint-monitor",
+		"health-check",
+		"api-health-check",
+		"http-monitor",
+		"http-testing",
+		"endurance-test",
+		"load-test",
+		"stress-test",
+		"reliability-testing",
+		"sqlite",
+		"api-reliability",
+		"latency-monitor",
+		"cli",
+		"devops",
+		"ci-cd"
+	],
+	"scripts": {
+		"build": "tsdown",
+		"typecheck": "tsc --noEmit",
+		"test": "vitest run",
+		"test:watch": "vitest",
+		"check": "biome check . --fix",
+		"dev": "bun run src/cli.ts",
+		"prepublishOnly": "bun run build"
+	},
+	"dependencies": {
+		"citty": "^0.2.1",
+		"c12": "^4.0.0-beta.4",
+		"zod": "^4.3.6"
+	},
+	"peerDependencies": {
+		"better-sqlite3": ">=11"
+	},
+	"peerDependenciesMeta": {
+		"better-sqlite3": {
+			"optional": true
+		}
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^2.4.9",
+		"@types/better-sqlite3": "^7.6.13",
+		"@types/node": "^25.5.0",
+		"lefthook": "^2.1.4",
+		"tsdown": "^0.21.7",
+		"typescript": "^6.0.2",
+		"vitest": "^4.1.2"
+	}
+}

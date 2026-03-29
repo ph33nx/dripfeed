@@ -1,0 +1,22 @@
+pre-commit:
+  parallel: true
+  commands:
+    biome-check:
+      glob: "*.{ts,tsx}"
+      run: bun run check --staged
+      stage_fixed: true
+    typecheck:
+      run: bun typecheck
+
+pre-push:
+  parallel: false
+  commands:
+    typecheck:
+      run: bun typecheck
+      priority: 1
+    biome-full:
+      run: bun run check
+      priority: 2
+    test:
+      run: bun run test
+      priority: 3

@@ -1,0 +1,12 @@
+.internal/
+node_modules/
+dist/
+*.db
+*.db-wal
+*.db-shm
+bun.lock
+.env*
+coverage/
+.DS_Store
+.cache/
+.temp/
