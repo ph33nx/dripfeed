@@ -1,7 +1,12 @@
 #!/usr/bin/env node
+import { createRequire } from 'node:module';
 import { defineCommand, runMain } from 'citty';
 import { createConsoleReporter } from './adapters/reporters/console.js';
 import type { Reporter } from './adapters/reporters/interface.js';
+
+const require = createRequire(import.meta.url);
+const { version } = require('../package.json') as { version: string };
+
 import { createJsonReporter } from './adapters/reporters/json.js';
 import { createMarkdownReporter } from './adapters/reporters/markdown.js';
 import { createSqliteStorage } from './adapters/storage/sqlite.js';
@@ -76,7 +81,9 @@ const run = defineCommand({
 		if (!shouldQuiet) {
 			const interval = config.interval ?? '3s';
 			const duration = args.duration ? ` for ${args.duration}` : '';
-			process.stdout.write(`\ndripfeed v0.1.0 — every ${interval}${duration} | Ctrl+C to stop\n\n`);
+			process.stdout.write(
+				`\ndripfeed v${version} | every ${interval}${duration} | Ctrl+C to stop\n\n`,
+			);
 		}
 
 		const test = createSoakTest(config, reporters);
@@ -285,8 +292,8 @@ const exportCmd = defineCommand({
 const main = defineCommand({
 	meta: {
 		name: 'dripfeed',
-		version: '0.1.0',
-		description: 'SQLite-native API soak testing. Drip, not firehose.',
+		version,
+		description: 'Soak test CLI for APIs. Hits endpoints at intervals, logs results to SQLite.',
 	},
 	subCommands: { run, init, report, export: exportCmd },
 });
