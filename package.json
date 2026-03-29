@@ -1,6 +1,6 @@
 {
 	"name": "dripfeed",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"type": "module",
 	"description": "Soak test CLI for APIs. Hits endpoints at intervals for hours, logs results to SQLite, fails CI on threshold breaches.",
 	"bin": {
